@@ -1,33 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Button, Container, Navbar } from "react-bootstrap";
 import UserList from "./Components/UserList";
 import Cart from "./Components/Cart/Cart";
-// import Modal from './Components/Modal';
-// import Container from 'react-bootstrap/Container';
+import CartProvider from "./Components/Context/CartProvider";
+import CartContext from "./Components/Context/cart-context";
 
 const App = () => {
-  const[cart,setCart] = useState(false);
+  const cartCtx = useContext(CartContext);
+  const [cartVisible, setCartVisible] = useState(false);
 
-  const showCartItems=()=>{
-    console.log("cartttt")
-   setCart(true);
-  }
+  const showCartItems = () => {
+    setCartVisible(true);
+  };
 
-  // const cartCloseHandler =()=>{
-  //   setCart(false);
-  // }
+  const hideCartItems = () => {
+    setCartVisible(false);
+  };
 
   return (
-    <div>
+    <CartProvider>
       <Navbar bg="primary" variant="dark">
         <Container>
           <Navbar.Brand href="#home">React Bootstrap</Navbar.Brand>
-           <Button onClick={showCartItems}>Cart</Button>
+          <Button onClick={showCartItems}>Cart</Button>
+          {cartVisible && (
+            <Cart items={cartCtx.items} onClose={hideCartItems} />
+          )}
         </Container>
       </Navbar>
-    <UserList />
-    {cart && <Cart/>}
-    </div>
+      <UserList/>
+    </CartProvider>
   );
 };
 
