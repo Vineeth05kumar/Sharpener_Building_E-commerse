@@ -23,14 +23,14 @@ export default function MainNavigation() {
           My 1st Project
         </Navbar.Brand>
         <Nav className="me-auto">
-          <Nav.Link as={Link} to="/about">
-            About
-          </Nav.Link>
-          <Nav.Link as={Link} to="/products">
-            Products
+          <Nav.Link as={Link} to="/home">
+          Home
           </Nav.Link>
           <Nav.Link as={Link} to="/store">
             Store
+          </Nav.Link>
+          <Nav.Link as={Link} to="/about">
+            About
           </Nav.Link>
         </Nav>
         <Button onClick={showCartItems}>Cart</Button>

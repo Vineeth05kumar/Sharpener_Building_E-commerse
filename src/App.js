@@ -1,20 +1,22 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Store from "./Components/Store";
 import About from "./Components/Pages/About";
-import Products from "./Components/Pages/Products";
+import Home from "./Components/Pages/Home";
 import RootLayout from "./Components/Pages/Root";
 import CartProvider from "./Components/Context/CartProvider";
 import Erroe from "./Components/Pages/Erroe";
+// import Header from "./Components/Pages/Header";
+// import Footer from "./Components/Pages/Footer";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
-    errorElement:<Erroe />,
+    errorElement: <Erroe />,
     children: [
       { path: "store", element: <Store /> },
       { path: "about", element: <About /> },
-      { path: "products", element: <Products /> },
+      { path: "home", element: <Home /> },
     ],
   },
 ]);
@@ -22,7 +24,9 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <CartProvider>
+      {/* <Header /> */}
       <RouterProvider router={router} />
+      {/* <Footer /> */}
     </CartProvider>
   );
 };
