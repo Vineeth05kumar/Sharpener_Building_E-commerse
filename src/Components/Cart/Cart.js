@@ -16,6 +16,7 @@ const Cart = ({ onClose }) => {
                 <th>ITEM</th>
                 <th>PRICE</th>
                 <th>QUANTITY</th>
+                <th>Total Amount</th>
               </tr>
             </thead>
             <tbody>
@@ -30,7 +31,7 @@ const Cart = ({ onClose }) => {
                   </td>
                   <td>${item.price}</td>
                   <td>{item.quantity}<Button variant="danger" onClick={()=>cartCtx.deleteItem(item.id)}>Remove</Button></td>
-                  
+                  <td>{cartCtx.totalAmount}</td>
                 </tr>
               ))}
             </tbody>

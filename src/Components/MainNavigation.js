@@ -19,7 +19,7 @@ export default function MainNavigation() {
   return (
     <Navbar bg="primary" variant="dark">
       <Container>
-        <Navbar.Brand as={Link} to="/">
+        <Navbar.Brand >
           My 1st Project
         </Navbar.Brand>
         <Nav className="me-auto">
@@ -31,6 +31,9 @@ export default function MainNavigation() {
           </Nav.Link>
           <Nav.Link as={Link} to="/about">
             About
+          </Nav.Link>
+          <Nav.Link as={Link} to="/contact_us">
+            Contact US
           </Nav.Link>
         </Nav>
         <Button onClick={showCartItems}>Cart</Button>

@@ -5,9 +5,8 @@ import Home from "./Components/Pages/Home";
 import RootLayout from "./Components/Pages/Root";
 import CartProvider from "./Components/Context/CartProvider";
 import Erroe from "./Components/Pages/Erroe";
-// import Header from "./Components/Pages/Header";
-// import Footer from "./Components/Pages/Footer";
-
+import ContactUs from "./Components/Pages/ContactUs"; 
+import './App.css'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +16,7 @@ const router = createBrowserRouter([
       { path: "store", element: <Store /> },
       { path: "about", element: <About /> },
       { path: "home", element: <Home /> },
+      {path:"contact_us",element:<ContactUs />}
     ],
   },
 ]);
@@ -24,9 +24,7 @@ const router = createBrowserRouter([
 const App = () => {
   return (
     <CartProvider>
-      {/* <Header /> */}
       <RouterProvider router={router} />
-      {/* <Footer /> */}
     </CartProvider>
   );
 };
