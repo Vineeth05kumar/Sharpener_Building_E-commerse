@@ -1,7 +1,10 @@
-import {Link} from "react-router-dom";
-import { Nav } from "react-bootstrap";
+import React from 'react';
 
-export default function About(){
-    return(<><h1>welcomee inside About</h1>
-    <Nav.Link as={Link} to="/store">Go to store</Nav.Link></>)
+export default function About() {
+  return (
+    <div>
+      <h1>About Page</h1>
+      <p>Learn more about us on this page.</p>
+    </div>
+  );
 }

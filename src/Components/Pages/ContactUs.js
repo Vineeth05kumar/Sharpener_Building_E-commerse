@@ -1,75 +1,41 @@
-import { Form, Button } from "react-bootstrap";
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useRef } from 'react';
+import { Form, Button } from 'react-bootstrap';
 
 export default function ContactUs() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const enteredEmail = useRef();
+  const enteredName = useRef();
 
-  const submitHandler = async(e) => {
-    e.preventDefault();
-    const myObj = {
-      Name: name,
-      Email: email,
-      Phone: phone,
-    };
-
-    try{
-        const response = await axios.post("https://myfirst-user-details-default-rtdb.firebaseio.com/contact_us.json",myObj,{headers:{"Content-Type":"application/json",},})
-        console.log(response.data);
-    }
-    catch(error){
-        console.log("There was an error submitting form!",error);
-    }
-    setEmail('');
-    setName('');
-    setPhone('');
+  const submitInfo = (event) => {
+    event.preventDefault();
+    const email = enteredEmail.current.value;
+    const name = enteredName.current.value;
+    console.log('Email:', email);
+    console.log('Name:', name);
   };
 
-  const nameHandler = (e) =>{
-    setName(e.target.value);
-  }
-  const phoneHandler = (e) =>{
-    setPhone(e.target.value);
-  }
-  const emailHandler = (e) =>{
-    setEmail(e.target.value);
-  }
-
   return (
-    <Form className="mt-5" onSubmit={submitHandler}>
-      <Form.Group controlId="formBasicName" className="mb-3">
-        <Form.Label>Name</Form.Label>
-        <Form.Control
-          type=""
-          placeholder="Name"
-          value={name}
-          onChange={nameHandler}
-        />
-      </Form.Group>
-      <Form.Group controlId="formBasicEmail" className="mb-3">
-        <Form.Label>Email Address</Form.Label>
+    <Form onSubmit={submitInfo}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email address</Form.Label>
         <Form.Control
           type="email"
           placeholder="Enter email"
-          value={email}
-          onChange={emailHandler}
+          ref={enteredEmail}
+          required
         />
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else
-        </Form.Text>
       </Form.Group>
-      <Form.Group controlId="formBasicPhone" className="mb-3">
-        <Form.Label>Phone Number</Form.Label>
+      <Form.Group className="mb-3" controlId="formBasicName">
+        <Form.Label>Name</Form.Label>
         <Form.Control
-          type="tel"
-          placeholder="Enter your Phone number"
-          value={phone}
-          onChange={phoneHandler}
+          type="text"
+          placeholder="Enter name"
+          ref={enteredName}
+          required
         />
       </Form.Group>
-      <Button type="submit">Submit</Button>
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
     </Form>
   );
 }
