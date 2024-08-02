@@ -8,6 +8,7 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/About";
 import ContactUs from "./components/pages/ContactUs";
 import Login from "./components/pages/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Header />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/store" element={<PrivateRoute element={Products} />} />
             <Route path="/store" element={<Products />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<ContactUs />} />
